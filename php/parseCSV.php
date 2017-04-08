@@ -1,14 +1,8 @@
 <?php
 
-header('Content-type: application/json');
-
 $err_level = error_reporting(0);
 
 $path = $_REQUEST["path"];
-
-
-//echo $path;
-//echo "\n";
 
 $rides = [];
 
@@ -48,6 +42,7 @@ foreach ($files as $fileName) {
 
 }
 
+header('Content-type: application/json');
 $rides = json_encode($rides);
 echo $rides;
 
