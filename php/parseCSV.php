@@ -1,5 +1,7 @@
 <?php
 
+$err_level = error_reporting(0);
+
 $path = $_REQUEST["path"];
 
 
