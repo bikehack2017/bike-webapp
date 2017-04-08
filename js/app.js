@@ -47,6 +47,7 @@ var totalDist;
         url: "php/parseCSV.php",
       data: {"path":"../data/"},
       success: function(data, success) {
+        console.log(data);
         data = $.parseJSON(data);
         console.log(data);
 
