@@ -1,0 +1,89 @@
+<html>
+
+<head>
+<title>Bike Hack</title>
+<link rel="icon" type="image/png" href="bike.png"/>
+
+<script src="js/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+
+
+<script src="js/app.js"></script>
+
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+
+
+
+<body>
+
+
+<div ng-app="app" ng-controller="ctrl">
+
+
+  <header id="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- header Nav Start -->
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">
+                  <img src="bike.png" height="50" alt="Logo">
+
+                </a>
+
+              </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Home</a></li>
+                    <!--<li><a href="#/projects">Projects</a></li>-->
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+<div ng-view></div>
+
+<footer>
+     <div class="container">
+         <div class="row">
+             <div class="col-md-12">
+               <div class="footer-manu">
+                 <ul>
+                   <li><a href="#/about">About</a></li>
+
+                 </ul>
+               </div>
+       <p>Thanks for visiting!</p>
+             </div>
+         </div>
+     </div>
+ </footer>
+
+</div>
+
+
+</body>
+
+</html>

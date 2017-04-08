@@ -1,0 +1,37 @@
+
+
+
+<div class="content">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-12">
+
+
+
+        <select ng-model="selected.ride" ng-change="plotData()" ng-options="x as x.name for x in rideData" > <option value="" disabled selected>Select a Ride</option></select>
+
+
+        <div >
+        <canvas id="lineGraph" height="350" ></canvas>
+        </div>
+        <br>
+        <br>
+
+        <div >
+        <canvas id="averageSpeed" height="100" ></canvas>
+        </div>
+
+        <br>
+        <br>
+
+        <div >
+        <canvas id="distanceTraveled" height="200" ></canvas>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
