@@ -12,7 +12,6 @@ app.config(function($routeProvider) {
 
 app.controller('ctrl', function($scope, $location, $http, $rootScope, $filter) {
 
-var MAX_SPEED = 30;
 
 $scope.selected = {};
 $scope.rideData = [];
@@ -48,22 +47,27 @@ var totalDist;
       data: {"path":"../data/"},
       success: function(data, success) {
         console.log(data);
-        data = $.parseJSON(data);
+        //data = JSON.parse(data);
         console.log(data);
 
         var reformatted = {};
         for (i = 0; i < data.length; i++) {
-          reformatted = {name:data[i].name, time:[], speed:[], elevation:[], distance:[], averageSpeed:0};
+          reformatted = {name:data[i].name, time:[], speed:[], elevation:[], distance:[], averageSpeed:0, max:0};
           var avg = 0;
-          for (j = 0; j < data[i].time.length; j++) {
-            reformatted.time.push(data[i].time[j]);
-            reformatted.speed.push(data[i].speed[j]);
-            reformatted.elevation.push(data[i].elevation[j]);
-            reformatted.distance.push(data[i].distance[j]);
-            avg = avg + parseInt(data[i].speed[j]);
+          var max = 0;
+          for (j = 0; j < data[i].time.length-1; j++) {
+            reformatted.time.push(data[i].time[j].trim());
+            reformatted.speed.push(data[i].speed[j].trim());
+            reformatted.elevation.push(data[i].elevation[j].trim());
+            reformatted.distance.push(data[i].distance[j].trim());
+            avg = avg + parseInt(data[i].speed[j].trim());
+            if (parseInt(data[i].speed[j].trim()) > max) {
+              max = parseInt(data[i].speed[j].trim());
+            }
           }
           console.log("total speed: " + avg);
           reformatted.averageSpeed = avg / reformatted.speed.length;
+          reformatted.max = max;
           $scope.rideData.push(reformatted);
         }
 
@@ -127,13 +131,13 @@ var totalDist;
     var myChart = new Chart(ctxAvgSpeed, {
       type: 'doughnut',
       data: {
-        labels: ["Average Speed", "Max Speed = 30"],
+        labels: ["Average Speed", "Max="+ride.max],
         datasets: [{
           backgroundColor: [
             "#A9CCBE",
             "#d4e5de"
           ],
-          data: [ride.averageSpeed, MAX_SPEED-ride.averageSpeed]
+          data: [ride.averageSpeed, ride.max-ride.averageSpeed]
         }]
       },
       options: {
@@ -158,8 +162,8 @@ var totalDist;
         data: {
             labels: [" "],
             datasets: [{
-                label: "Total Distance",
-                data: [ride.distance[ride.distance.length - 1]],
+                label: "Total Distance (miles)",
+                data: [ride.distance[ride.distance.length - 2]],
                 backgroundColor: '#54997E',
                 borderWidth: 1
             }]
